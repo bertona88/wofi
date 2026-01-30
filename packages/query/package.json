@@ -1,0 +1,26 @@
+{
+  "name": "@wofi/query",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "test": "npm run build && node --test dist/test/**/*.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo \"no lint configured for @wofi/query\""
+  },
+  "dependencies": {
+    "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@types/pg": "^8.16.0",
+    "pg-mem": "^2.9.0",
+    "@wofi/indexer": "file:../indexer"
+  }
+}

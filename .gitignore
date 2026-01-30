@@ -1,0 +1,28 @@
+node_modules/
+**/node_modules/
+
+dist/
+**/dist/
+build/
+**/build/
+.tsbuildinfo
+**/*.tsbuildinfo
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+logs/
+rlm/
+
+.DS_Store
+.env
+
+# Subprojects to ignore
+embeddingplayground/
+Wofimonorepo/
+wofi_mcp-main/
+
+# Embedded repos
+external/openai-agents-js/

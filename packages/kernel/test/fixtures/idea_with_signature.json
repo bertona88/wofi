@@ -1,0 +1,15 @@
+{
+  "type": "wofi.idea.v1",
+  "schema_version": "1.0",
+  "content_id": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "signature": {
+    "alg": "ed25519",
+    "value": "cafebabe"
+  },
+  "title": "Negative feedback control",
+  "kind": "concept",
+  "summary": "A control strategy",
+  "tags": ["control", "systems"],
+  "created_at": "2026-01-07T00:00:00Z",
+  "author": { "kind": "pubkey", "value": "deadbeef" }
+}

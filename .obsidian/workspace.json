@@ -1,0 +1,233 @@
+{
+  "main": {
+    "id": "c61ac1431a357966",
+    "type": "split",
+    "children": [
+      {
+        "id": "ead7dd4372b2b597",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b94232734e1e2d05",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "plan/moduleAplan.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "moduleAplan"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b34715b997651130",
+    "type": "split",
+    "children": [
+      {
+        "id": "475efd3de48ced0c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "973d8e276e08c7d4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "4fc27355b3f62b0a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "886eea033cb32368",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a9572dd443405f43",
+    "type": "split",
+    "children": [
+      {
+        "id": "a01c4e8737518e42",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0841742b0ea3ec66",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "fc3c256b3548b0a5",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "7e065b57d81f0b5f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "621f8a8a3c253d69",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "f00b2128533c1916",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "b94232734e1e2d05",
+  "lastOpenFiles": [
+    "plan/moduleA5plan.md",
+    "plan/moduleA4plan.md",
+    "plan/moduleA3plan.md",
+    "plan/moduleA2plan.md",
+    "plan/moduleA1plan.md",
+    "plan/moduleAplan.md",
+    "plan.md",
+    "AGENTS.md",
+    "specs/004-high-moduleA5-graph-query-layer.md",
+    "docs/local-postgres.md",
+    "packages/indexer/migrations/004_submissions.sql",
+    "external/openai-agents-js/examples/mcp/README.md",
+    "external/openai-agents-js/examples/handoffs/README.md",
+    "external/openai-agents-js/examples/ai-sdk/README.md",
+    "external/openai-agents-js/examples/agent-patterns/README.md",
+    "external/openai-agents-js/AGENTS.md",
+    "external/openai-agents-js/PLANS.md",
+    "external/openai-agents-js/vitest.integration.config.ts",
+    "external/openai-agents-js/vitest.config.ts",
+    "external/openai-agents-js/verdaccio-config.yml",
+    "external/openai-agents-js/tsconfig.test.json",
+    "external/openai-agents-js/tsconfig.json",
+    "external/openai-agents-js/tsconfig.examples.json",
+    "external/openai-agents-js/tsc-multi.json",
+    "external/openai-agents-js/scripts/run-example-starts.mjs",
+    "external/openai-agents-js/scripts/dev.mts",
+    "external/openai-agents-js/packages/agents-realtime/README.md",
+    "external/openai-agents-js/packages/agents-realtime/CHANGELOG.md",
+    "external/openai-agents-js/packages/agents-openai/README.md",
+    "external/openai-agents-js/packages/agents-openai/CHANGELOG.md",
+    "external/openai-agents-js/packages/agents-extensions/README.md",
+    "external/openai-agents-js/packages/agents-extensions/CHANGELOG.md",
+    "external/openai-agents-js/packages/agents-core/README.md",
+    "external/openai-agents-js/packages/agents-core/CHANGELOG.md",
+    "external/openai-agents-js/packages/agents/README.md",
+    "external/openai-agents-js/packages/agents/CHANGELOG.md",
+    "external/openai-agents-js/examples/realtime-next/public/window.svg",
+    "external/openai-agents-js/examples/realtime-next/public/vercel.svg",
+    "external/openai-agents-js/examples/realtime-next/public/globe.svg",
+    "external/openai-agents-js/examples/realtime-next/public/next.svg",
+    "external/openai-agents-js/examples/realtime-next/public/file.svg",
+    "external/openai-agents-js/examples/realtime-demo/public/vite.svg",
+    "external/openai-agents-js/examples/nextjs/public/window.svg",
+    "external/openai-agents-js/examples/nextjs/public/vercel.svg",
+    "external/openai-agents-js/examples/nextjs/public/globe.svg",
+    "external/openai-agents-js/examples/nextjs/public/next.svg",
+    "Untitled.canvas"
+  ]
+}

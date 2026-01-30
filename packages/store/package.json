@@ -1,0 +1,24 @@
+{
+  "name": "@wofi/store",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "test": "npm run build && node --test dist/test/**/*.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo \"no lint configured for @wofi/store\""
+  },
+  "dependencies": {
+    "@ardrive/turbo-sdk": "^1.31.0",
+    "@wofi/kernel": "file:../kernel"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "wofi",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "npm -ws test",
+    "build": "npm -ws run build",
+    "lint": "npm -ws run lint",
+    "typecheck": "npm -ws run typecheck",
+    "indexer:migrate": "npm -w @wofi/indexer run migrate --",
+    "indexer:sync": "npm -w @wofi/indexer run sync --",
+    "indexer:backfill": "npm -w @wofi/indexer run backfill --",
+    "indexer:replay": "npm -w @wofi/indexer run replay --",
+    "indexer:seed": "npm -w @wofi/indexer run seed --"
+  }
+}
