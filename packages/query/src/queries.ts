@@ -210,7 +210,7 @@ export async function searchIdeasByEmbedding(
   opts?: { limit?: number; model?: string; dimensions?: number }
 ): Promise<IdeaSearchResult[]> {
   const limit = assertLimit('limit', opts?.limit, 10)
-  const model = opts?.model ?? 'text-embedding-3-large'
+  const model = opts?.model ?? 'text-embedding-3-small'
   const dimensions = opts?.dimensions ?? embedding.length
 
   if (embedding.length !== dimensions) {

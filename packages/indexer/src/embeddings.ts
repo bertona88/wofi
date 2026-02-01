@@ -5,8 +5,8 @@ import type { Pool, PoolClient } from 'pg'
 import { withClient } from './db.js'
 import type { Logger } from './types.js'
 
-const DEFAULT_MODEL = 'text-embedding-3-large'
-const DEFAULT_DIMENSIONS = 3072
+const DEFAULT_MODEL = 'text-embedding-3-small'
+const DEFAULT_DIMENSIONS = 1536
 const DEFAULT_MAX_CHARS = 8000
 const DEFAULT_BATCH_SIZE = 1
 const DEFAULT_IDLE_MS = 1000

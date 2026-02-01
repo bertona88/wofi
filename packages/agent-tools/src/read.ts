@@ -21,8 +21,8 @@ import type {
   ToolContext
 } from './types.js'
 
-const DEFAULT_MODEL = 'text-embedding-3-large'
-const DEFAULT_DIMENSIONS = 3072
+const DEFAULT_MODEL = 'text-embedding-3-small'
+const DEFAULT_DIMENSIONS = 1536
 const DEFAULT_LIMIT = 10
 const DEFAULT_MAX_CHARS = 8000
 

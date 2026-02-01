@@ -26,11 +26,11 @@ CREATE TABLE IF NOT EXISTS idea_embeddings (
   model TEXT NOT NULL,
   dimensions INT NOT NULL,
   input_hash TEXT NOT NULL,
-  embedding VECTOR(3072) NOT NULL,
+  embedding VECTOR(1536) NOT NULL,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   PRIMARY KEY (idea_id, model, dimensions)
 );
 
 CREATE INDEX IF NOT EXISTS idea_embeddings_model_idx ON idea_embeddings (model, dimensions);
-CREATE INDEX IF NOT EXISTS idea_embeddings_embedding_idx ON idea_embeddings USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);
+CREATE INDEX IF NOT EXISTS idea_embeddings_embedding_idx ON idea_embeddings USING hnsw (embedding vector_cosine_ops);
