@@ -1,6 +1,6 @@
 # Module B6 Plan — Submission API + Normalization (Intake Agent)
 *Date: 2026-01-31*  
-*Status: IN PROGRESS (draft persistence + conversation control implemented)*
+*Status: IN PROGRESS (draft persistence + conversation control implemented; gating + prior-art checks pending)*
 
 Scope: Module **6** from `plan.md` (“Submission API + Normalization”), implemented as the **user-facing intake agent** pipeline described in `[[idea_pipeline_v_0.md]]`.
 
@@ -71,7 +71,7 @@ Security:
 
 ## Intake state machine (implementation plan)
 
-### State A — Drafting
+### State A — Drafting ✅
 Goal: converge on a decomposable “final draft”.
 
 Implementation notes:
@@ -79,7 +79,7 @@ Implementation notes:
 - Keep the agent on-topic with “drift nudge → drift stop” logic.
 - Persist latest proposed draft via `draft.set_final(...)` on each stable iteration.
 
-### State B — Final draft proposed
+### State B — Final draft proposed ✅
 Goal: explicit user agreement.
 
 Implementation notes:
@@ -97,7 +97,7 @@ Implementation notes:
   - acceptance should come with a structured “why accepted” payload (for tracing + later audits)
   - rejection should include closest WOFI matches (if any)
 
-### State D — Submit + close
+### State D — Submit + close ✅
 Goal: mint kernel objects + enqueue decomposition.
 
 Implementation notes:
@@ -135,12 +135,12 @@ Open question: what goes into the on-chain submission payload:
 
 ## Acceptance criteria
 
-- Can run an end-to-end intake flow and deterministically produce either:
+- ✅ Can run an end-to-end intake flow and deterministically produce either:
   - `rejected` with reasons and suggested redirects, or
   - `accepted` with minted `Submission`, minted `Idea`, `SUBMITTED_AS` edge, and a queued decomposition job.
-- Enforces “one submission per conversation” and closes the conversation after mint.
-- Uses guardrails to hard-stop on prompt injection attempts.
-- Emits traces for each run (`workflow_name` includes `intake`).
+- ✅ Enforces “one submission per conversation” and closes the conversation after mint.
+- ⏳ Uses guardrails to hard-stop on prompt injection attempts.
+- ⏳ Emits traces for each run (`workflow_name` includes `intake`).
 
 ---
 
@@ -154,6 +154,21 @@ If a user submits an idea already in WOFI, we politely refer to that node id.
 We dont need human in the loop.
   
 We persist `draft.set_final(...)` state in Conversations API metadata (or response-chain metadata when using `previous_response_id`)
+
+---
+
+## Conversation API usage (current)
+
+We use OpenAI Conversations API as the durable state store for the intake flow:
+- Create (or resume) a conversation and pass `conversationId` into every run.
+- Store small state pointers in conversation `metadata`:
+  - `wofi_state`, `wofi_draft_rev`, `wofi_draft_hash`, `wofi_draft_updated_at`, `wofi_submission_id`, `wofi_idea_id`, `wofi_closed_at`, `wofi_close_reason`
+- Draft payloads are stored off-conversation in `devstore/intake-drafts/<conversationId>/latest.json` to avoid metadata size limits.
+- The intake agent checks `wofi_state`; if `closed`, it blocks tool execution and requires a new conversation for new submissions.
+
+Key constraints:
+- Metadata is limited to 16 key/value pairs (64-char keys, 512-char values).
+- Conversations persist items without the 30-day TTL applied to standalone Responses.
 
 ---
 

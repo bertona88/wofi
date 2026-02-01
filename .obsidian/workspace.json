@@ -11,14 +11,17 @@
             "id": "b94232734e1e2d05",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "planB/moduleB6plan.md",
-                "mode": "source",
-                "source": false
+                "file": "Untitled.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
               },
-              "icon": "lucide-file",
-              "title": "moduleB6plan"
+              "icon": "lucide-layout-dashboard",
+              "title": "Untitled"
             }
           }
         ]
@@ -182,8 +185,16 @@
   },
   "active": "b94232734e1e2d05",
   "lastOpenFiles": [
+    "Untitled.base",
+    "packages/agent-tools/AGENTS.md",
+    "packages/kernel/README.md",
+    "packages/indexer/README.md",
+    "packages/intake-agent/AGENTS.md",
+    "planB/moduleB9plan.md",
+    "planB/moduleB8plan.md",
     "planB/moduleB7plan.md",
     "planB/moduleB6plan.md",
+    "planB/letsfirstbuildtheagentstoolsplan.md",
     "packages/intake-agent/devstore/index.json",
     "packages/intake-agent/devstore/objects",
     "packages/intake-agent/devstore",
@@ -196,8 +207,6 @@
     "packages/intake-agent/dist/src/index.js",
     "packages/intake-agent/dist/src/index.d.ts",
     "packages/intake-agent/dist/src/conversation-state.js",
-    "planB/moduleB8plan.md",
-    "planB/letsfirstbuildtheagentstoolsplan.md",
     "`wofi_chat_decisions_2026-01-28.md`.md",
     "node_modules/openai/src/internal/qs/README.md",
     "node_modules/openai/src/internal/qs/LICENSE.md",
@@ -212,11 +221,6 @@
     "node_modules/pkce-challenge/README.md",
     "node_modules/pkce-challenge/CHANGELOG.md",
     "node_modules/json-schema-typed/LICENSE.md",
-    "node_modules/eventsource-parser/README.md",
-    "node_modules/eventsource/README.md",
-    "node_modules/express-rate-limit/readme.md",
-    "node_modules/express-rate-limit/license.md",
-    "node_modules/ajv-formats/README.md",
     "Untitled 1.canvas",
     "Untitled.canvas",
     "Gemini_Generated_Image_2hzrld2hzrld2hzr.png",
