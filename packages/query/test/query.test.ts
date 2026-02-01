@@ -12,13 +12,17 @@ import {
   getDerivedFrom
 } from '../src/index.js'
 
+process.env.WOFI_INDEXER_SKIP_PGVECTOR = 'true'
+
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 async function applyMigrations(pool: any): Promise<void> {
   const migrationsDir = path.resolve(__dirname, '..', '..', '..', 'indexer', 'migrations')
   const files = (await fs.readdir(migrationsDir)).filter((name) => name.endsWith('.sql')).sort()
+  const skipPgvector = process.env.WOFI_INDEXER_SKIP_PGVECTOR === 'true'
   for (const file of files) {
+    if (skipPgvector && file.includes('embeddings')) continue
     const sql = await fs.readFile(path.join(migrationsDir, file), 'utf8')
     await pool.query(sql)
   }

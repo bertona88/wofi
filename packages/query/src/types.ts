@@ -50,6 +50,19 @@ export type IdeaRecord = {
   author_pubkey: string | null
 }
 
+export type IdeaSearchResult = {
+  type: 'idea'
+  id: string
+  title: string | null
+  kind: string | null
+  summary: string | null
+  tags: unknown | null
+  created_at: string | null
+  author_pubkey: string | null
+  distance: number | null
+  score: number | null
+}
+
 export type ConstructionInput = {
   idea_id: string
   role: string | null

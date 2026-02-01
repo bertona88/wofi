@@ -1,0 +1,32 @@
+{
+  "name": "@wofi/agent-tools",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "test": "npm run build && node --test dist/test/**/*.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo \"no lint configured for @wofi/agent-tools\"",
+    "prototype-agent": "node dist/src/prototype-agent.js"
+  },
+  "dependencies": {
+    "@openai/agents": "^0.4.4",
+    "@wofi/indexer": "file:../indexer",
+    "@wofi/kernel": "file:../kernel",
+    "@wofi/query": "file:../query",
+    "@wofi/store": "file:../store",
+    "openai": "^4.104.0",
+    "pg": "^8.12.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@types/pg": "^8.16.0",
+    "typescript": "^5.3.3"
+  }
+}

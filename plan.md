@@ -1,4 +1,4 @@
-are i # WOFI 2.0 — Module Plan
+# WOFI 2.0 — Module Plan
 *Date: 2026-01-29*
 
 Current state: Module A1 kernel package implemented and tested (`@wofi/kernel`); Module A2 signing/identity implemented and tested in `@wofi/kernel`; Module A3 immutable object store implemented and tested (`@wofi/store`); Module A4 Postgres mirror/indexer implemented (`@wofi/indexer`). Remaining modules still in planning.
@@ -22,6 +22,21 @@ Implementation notes (2026-01-30):
 - Added kernel `Submission` object (`wofi.submission.v1`) and edge rels `SUBMITTED_AS` / `DERIVED_FROM` with schema + invariants.
 - Indexer: submissions table + ingest expansion + backfill type; Query: submission helpers + tests.
 - Tests: `npm -w @wofi/kernel test`, `npm -w @wofi/indexer test`, `npm -w @wofi/query test`.
+
+Planning notes (2026-01-31):
+- Refined Module B (“Ingestion + proposal generation”) into subplans in `planB/`, grounded in `idea pipeline.md`, `idea_pipeline_v_0.md`, and `how_decomposition_works.md`.
+- Tests: n/a (planning-only change).
+
+Implementation notes (2026-01-31):
+- Added pgvector embedding pipeline: `embedding_jobs` + `idea_embeddings` migration, indexer worker, and query `searchIdeasByEmbedding` helper.
+- Added indexer CLI `embed` + embedding env config, plus test skip for pgvector migration in pg-mem.
+- Implemented agent-tools `searchIdeas` (hybrid text + vector) using OpenAI `text-embedding-3-large`.
+- Tests: `npm -w @wofi/indexer test`, `npm -w @wofi/query test`, `npm -w @wofi/agent-tools test` (pg-mem; recursive CTE tests skipped).
+- Added agent-tools read wrappers + tool schemas for `get_idea`, `get_construction`, `get_claim_bundle`, `get_submission`.
+- Fixed agent-tools tool schema typing for `exactOptionalPropertyTypes` and optional claim bundle target handling.
+- Added decomposition queue: migration + indexer enqueue/worker + agent tool (`decomposition.enqueue`).
+- Added prototype intake agent runner (`packages/agent-tools/src/prototype-agent.ts`) using the Agents SDK.
+- Tests (this update): `npm -w @wofi/indexer test`, `npm -w @wofi/agent-tools test`.
 
 Goal: enumerate the major software modules for WOFI 2.0 (kernel-aligned, proposal-set first, profile-based views).
 
@@ -69,25 +84,17 @@ References:
 
 ### B) Ingestion + proposal generation
 
-6) **Submission API + Normalization**
-   - Owns: user-facing submission endpoints; turns raw text into normalized `Idea` drafts + metadata.
-   - Notes: must be idempotent (same content -> same `content_id`).
+Refined subplans (2026-01-31):
+- `[[planB/moduleBplan.md]]` — overview + cross-cutting constraints
+- `[[planB/moduleB6plan.md]]` — Submission API + normalization (intake agent)
+- `[[planB/moduleB7plan.md]]` — Claim extraction
+- `[[planB/moduleB8plan.md]]` — Evidence attachment pipeline
+- `[[planB/moduleB9plan.md]]` — Construction proposal generator (decomposition agents)
+- `[[planB/moduleB10plan.md]]` — Prior-art retrieval + scoring artifacts
 
-7) **Claim Extraction**
-   - Owns: extracting candidate `Claim` nodes + `ABOUT` edges from an Idea/Implementation submission.
-   - Output: claims with clear operationalization hints when possible.
-
-8) **Evidence Attachment Pipeline**
-   - Owns: attaching Evidence to Claims only (`SUPPORTS`/`REFUTES`), never to Ideas.
-   - Sources: web/papers/patents, user-uploaded sources, experiments, third-party datasets.
-
-9) **Construction Proposal Generator**
-   - Owns: proposing multiple candidate `Construction`s for an Idea (compose/specialize/…).
-   - Output: proposal set (do not delete alternatives).
-
-10) **Prior-Art Retrieval + Scoring**
-   - Owns: semantic prior-art search for *concepts*, used to discount minting cost for “known” bridges.
-   - Output: (a) persisted retrieval artifacts/locators, (b) a prior-art score + justification trace.
+Notes:
+- These plans are grounded in `[[idea pipeline.md]]`, `[[idea_pipeline_v_0.md]]`, and `[[how_decomposition_works.md]]`.
+- Agent runtime choice: use `external/openai-agents-js/` patterns and docs (Agents SDK + Responses API + Conversation API).
 
 ---
 

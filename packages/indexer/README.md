@@ -9,6 +9,8 @@ PostgreSQL mirror + indexer + backfill for immutable kernel objects (Module A4).
 - `npm run backfill -- --type wofi.idea.v1 --from 2025-01-01T00:00:Z` — Arweave backfill
 - `npm run replay -- --content-id sha256:...` — re-run typed expansion for a single object
 - `npm run seed` — insert a small local test graph (unsigned objects)
+- `npm run embed -- --watch` — process embedding jobs (pgvector)
+- `npm run decompose -- --watch` — process decomposition jobs (noop worker)
 
 ### Configuration
 
@@ -18,6 +20,17 @@ PostgreSQL mirror + indexer + backfill for immutable kernel objects (Module A4).
 - `WOFI_INDEXER_BATCH_SIZE` (default `50`)
 - `WOFI_INDEXER_CONCURRENCY` (default `1`)
 - `WOFI_INDEXER_MIGRATIONS_DIR` (override migrations path)
+- `WOFI_INDEXER_SKIP_PGVECTOR` (`true` to skip pgvector migration, useful in tests)
+- `OPENAI_API_KEY` or `WOFI_OPENAI_API_KEY` (required for embeddings)
+- `WOFI_EMBEDDING_MODEL` (default `text-embedding-3-large`)
+- `WOFI_EMBEDDING_DIMENSIONS` (default `3072`)
+- `WOFI_EMBEDDING_MAX_CHARS` (default `8000`)
+- `WOFI_EMBEDDING_BATCH_SIZE` (default `1`)
+- `WOFI_EMBEDDING_IDLE_MS` (default `1000`)
+- `WOFI_EMBEDDING_WORKER_ID` (default hostname)
+- `WOFI_DECOMPOSITION_BATCH_SIZE` (default `1`)
+- `WOFI_DECOMPOSITION_IDLE_MS` (default `1000`)
+- `WOFI_DECOMPOSITION_WORKER_ID` (default hostname)
 
 ### Outbox expectation
 

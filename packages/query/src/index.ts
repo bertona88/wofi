@@ -5,6 +5,7 @@ export {
   getConstruction,
   getIdeaNeighborhood,
   getIdeaLineage,
+  searchIdeasByEmbedding,
   getClaimBundle,
   getSubmission,
   getIdeaSubmissions,
@@ -33,6 +34,7 @@ export type {
   GraphResponse,
   IdeaNode,
   IdeaRecord,
+  IdeaSearchResult,
   LineageOptions,
   NeighborhoodOptions,
   SubmissionRecord

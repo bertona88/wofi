@@ -4,6 +4,7 @@ This captures the local Postgres setup used for indexer testing so we don't lose
 
 ## What we installed
 - Homebrew `postgresql@16` (keg-only)
+- `pgvector` extension (required for embeddings search)
 
 ## Start the database service
 ```bash
@@ -13,6 +14,11 @@ brew services start postgresql@16
 ## Create the local test database
 ```bash
 /opt/homebrew/opt/postgresql@16/bin/createdb wofi_indexer_test
+```
+
+## Enable pgvector in the database
+```bash
+psql postgres://$(whoami)@localhost:5432/wofi_indexer_test -c 'CREATE EXTENSION IF NOT EXISTS vector;'
 ```
 
 ## Test connection URL

@@ -6,7 +6,11 @@ import { runMigrations } from './migrations.js'
 import { ingestOutboxBatch, ingestObject } from './ingest.js'
 import { backfillFromArweave } from './backfill.js'
 import { createArweaveClient } from './arweave.js'
+import { runEmbeddingWorker } from './embeddings.js'
+import { runDecompositionWorker } from './decomposition.js'
 import type { IndexerConfig } from './types.js'
+import type { EmbeddingWorkerConfig } from './embeddings.js'
+import type { DecompositionWorkerConfig } from './decomposition.js'
 
 function parseArgs(argv: string[]): Record<string, string | boolean> {
   const out: Record<string, string | boolean> = {}
@@ -134,6 +138,41 @@ async function runMigrate(args: Record<string, string | boolean>): Promise<void>
   await pool.end()
 }
 
+async function runEmbed(args: Record<string, string | boolean>): Promise<void> {
+  const config = loadConfig()
+  const logger = createLogger({ json: args['log-json'] === true })
+  const pool = createPool(config.databaseUrl)
+
+  const overrides: Partial<EmbeddingWorkerConfig> = {}
+  if (typeof args.model === 'string') overrides.model = args.model
+  if (typeof args.dimensions === 'string') overrides.dimensions = Number(args.dimensions)
+  if (typeof args['max-chars'] === 'string') overrides.maxChars = Number(args['max-chars'])
+  if (typeof args['batch-size'] === 'string') overrides.batchSize = Number(args['batch-size'])
+  if (typeof args['idle-ms'] === 'string') overrides.idleMs = Number(args['idle-ms'])
+  if (typeof args['worker-id'] === 'string') overrides.workerId = args['worker-id']
+
+  const watch = args.watch === true
+
+  await runEmbeddingWorker(pool, { ...overrides, logger, watch })
+  await pool.end()
+}
+
+async function runDecompose(args: Record<string, string | boolean>): Promise<void> {
+  const config = loadConfig()
+  const logger = createLogger({ json: args['log-json'] === true })
+  const pool = createPool(config.databaseUrl)
+
+  const overrides: Partial<DecompositionWorkerConfig> = {}
+  if (typeof args['batch-size'] === 'string') overrides.batchSize = Number(args['batch-size'])
+  if (typeof args['idle-ms'] === 'string') overrides.idleMs = Number(args['idle-ms'])
+  if (typeof args['worker-id'] === 'string') overrides.workerId = args['worker-id']
+
+  const watch = args.watch === true
+
+  await runDecompositionWorker(pool, { ...overrides, logger, watch })
+  await pool.end()
+}
+
 async function main(): Promise<void> {
   const [command, ...rest] = process.argv.slice(2)
   const args = parseArgs(rest)
@@ -154,8 +193,14 @@ async function main(): Promise<void> {
     case 'migrate':
       await runMigrate(args)
       return
+    case 'embed':
+      await runEmbed(args)
+      return
+    case 'decompose':
+      await runDecompose(args)
+      return
     default:
-      throw new Error('Usage: indexer <sync|backfill|replay|migrate> [--flags]')
+      throw new Error('Usage: indexer <sync|backfill|replay|migrate|embed|decompose> [--flags]')
   }
 }
 

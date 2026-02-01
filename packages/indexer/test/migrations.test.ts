@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url'
 import { newDb } from 'pg-mem'
 import { runMigrations } from '../src/migrations.js'
 
+process.env.WOFI_INDEXER_SKIP_PGVECTOR = 'true'
+
 const migrationsDir = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   '..',

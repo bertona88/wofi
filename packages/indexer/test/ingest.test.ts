@@ -7,6 +7,8 @@ import { contentId } from '@wofi/kernel'
 import { runMigrations } from '../src/migrations.js'
 import { ingestObject, retryDeferred } from '../src/ingest.js'
 
+process.env.WOFI_INDEXER_SKIP_PGVECTOR = 'true'
+
 const migrationsDir = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   '..',

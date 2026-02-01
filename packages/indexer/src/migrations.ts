@@ -35,6 +35,7 @@ export async function runMigrations(
 ): Promise<void> {
   const logger = opts?.logger
   const migrationsDir = await resolveMigrationsDir(opts?.migrationsDir)
+  const skipPgvector = process.env.WOFI_INDEXER_SKIP_PGVECTOR === 'true'
 
   const entries = await fs.readdir(migrationsDir)
   const files = entries.filter((name) => name.endsWith('.sql')).sort()
@@ -51,6 +52,10 @@ export async function runMigrations(
     const applied = new Set(appliedRes.rows.map((row: { id: string }) => row.id))
 
     for (const file of files) {
+      if (skipPgvector && file.includes('embeddings')) {
+        logger?.info?.('skipping pgvector migration', { file })
+        continue
+      }
       if (applied.has(file)) continue
       const sql = await fs.readFile(path.join(migrationsDir, file), 'utf8')
       logger?.info?.('applying migration', { file })

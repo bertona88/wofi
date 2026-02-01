@@ -21,6 +21,7 @@ import type {
   GraphNode,
   GraphResponse,
   IdeaRecord,
+  IdeaSearchResult,
   LineageOptions,
   NeighborhoodOptions,
   SubmissionRecord
@@ -83,6 +84,18 @@ function parseDirection(direction?: Direction): Direction {
     })
   }
   return direction
+}
+
+function toVectorLiteral(embedding: number[]): string {
+  if (!Array.isArray(embedding) || embedding.length === 0) {
+    throw makeQueryError(QueryErrorCode.INVALID_ARGUMENT, 'embedding must be a non-empty array')
+  }
+  for (const value of embedding) {
+    if (!Number.isFinite(value)) {
+      throw makeQueryError(QueryErrorCode.INVALID_ARGUMENT, 'embedding contains non-finite values')
+    }
+  }
+  return `[${embedding.join(',')}]`
 }
 
 function encodeCursor(cursor: GraphCursor): string {
@@ -188,6 +201,62 @@ export async function getIdea(db: Queryable, id: string): Promise<IdeaRecord> {
       created_at: row.created_at,
       author_pubkey: row.author_pubkey
     }
+  })
+}
+
+export async function searchIdeasByEmbedding(
+  db: Queryable,
+  embedding: number[],
+  opts?: { limit?: number; model?: string; dimensions?: number }
+): Promise<IdeaSearchResult[]> {
+  const limit = assertLimit('limit', opts?.limit, 10)
+  const model = opts?.model ?? 'text-embedding-3-large'
+  const dimensions = opts?.dimensions ?? embedding.length
+
+  if (embedding.length !== dimensions) {
+    throw makeQueryError(QueryErrorCode.INVALID_ARGUMENT, 'embedding length does not match dimensions', {
+      details: { length: embedding.length, dimensions }
+    })
+  }
+
+  const vector = toVectorLiteral(embedding)
+
+  return await withClient(db, async (client) => {
+    const res = await client.query<{
+      content_id: string
+      title: string | null
+      kind: string | null
+      summary: string | null
+      tags: unknown | null
+      created_at: string | null
+      author_pubkey: string | null
+      distance: number | null
+    }>(
+      `SELECT i.content_id, i.title, i.kind, i.summary, i.tags, i.created_at, i.author_pubkey,
+              e.embedding <=> $1::vector AS distance
+       FROM idea_embeddings e
+       JOIN ideas i ON i.content_id = e.idea_id
+       WHERE e.model = $2 AND e.dimensions = $3
+       ORDER BY e.embedding <=> $1::vector
+       LIMIT $4`,
+      [vector, model, dimensions, limit]
+    )
+
+    return res.rows.map((row) => {
+      const distance = row.distance ?? null
+      return {
+        type: 'idea',
+        id: row.content_id,
+        title: row.title,
+        kind: row.kind,
+        summary: row.summary,
+        tags: row.tags,
+        created_at: row.created_at,
+        author_pubkey: row.author_pubkey,
+        distance,
+        score: distance === null ? null : 1 - distance
+      }
+    })
   })
 }
 

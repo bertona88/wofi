@@ -18,10 +18,13 @@
     "backfill": "node dist/src/cli.js backfill",
     "replay": "node dist/src/cli.js replay",
     "migrate": "node dist/src/cli.js migrate",
-    "seed": "node dist/src/seed.js"
+    "seed": "node dist/src/seed.js",
+    "embed": "node dist/src/cli.js embed",
+    "decompose": "node dist/src/cli.js decompose"
   },
   "dependencies": {
     "@wofi/kernel": "file:../kernel",
+    "openai": "^4.104.0",
     "pg": "^8.12.0"
   },
   "devDependencies": {
