@@ -1,0 +1,27 @@
+{
+  "name": "@wofi/decomposition-agent",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "test": "npm run build && node --test dist/test/**/*.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo \"no lint configured for @wofi/decomposition-agent\"",
+    "worker": "node dist/src/cli.js"
+  },
+  "dependencies": {
+    "@openai/agents": "^0.4.4",
+    "@wofi/agent-tools": "file:../agent-tools",
+    "@wofi/indexer": "file:../indexer",
+    "@wofi/store": "file:../store"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "typescript": "^5.3.3"
+  }
+}

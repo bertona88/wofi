@@ -1,6 +1,6 @@
 # Module B9 Plan — Construction Proposal Generator (Decomposition Agents)
 *Date: 2026-01-31*  
-*Status: DRAFT (planning)*
+*Status: IN PROGRESS (v0 worker wired, 2026-02-01)*
 
 Scope: Module **9** from `plan.md` (“Construction Proposal Generator”).
 
@@ -117,3 +117,12 @@ Outputs (persisted):
 - Unit: validation of decomposition outputs against kernel invariants.
 - Integration: golden fixtures of target ideas → deterministic set of minted objects (with controlled model settings / recorded runs).
 
+---
+
+## Implementation notes (2026-02-01)
+
+- Added `@wofi/decomposition-agent` package with a worker CLI that processes `decomposition_jobs`.
+- Worker uses Agents SDK + Responses API with `web_search` tool for evidence retrieval.
+- Uses `wofi.search_ideas` (hybrid) for WOFI graph reuse and mints objects via agent tools.
+- `web_search` sources are included via model provider data for traceability.
+- Tests: `npm -w @wofi/decomposition-agent run build`

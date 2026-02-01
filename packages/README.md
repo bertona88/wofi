@@ -11,3 +11,4 @@ Packages:
 - `packages/query/` — `@wofi/query` (Module A5)
 - `packages/agent-tools/` — `@wofi/agent-tools` (Module B)
 - `packages/intake-agent/` — `@wofi/intake-agent` (Module B6)
+- `packages/decomposition-agent/` — `@wofi/decomposition-agent` (Module B9)

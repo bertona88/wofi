@@ -11,6 +11,7 @@ PostgreSQL mirror + indexer + backfill for immutable kernel objects (Module A4).
 - `npm run seed` — insert a small local test graph (unsigned objects)
 - `npm run embed -- --watch` — process embedding jobs (pgvector)
 - `npm run decompose -- --watch` — process decomposition jobs (noop worker)
+- `npm -w @wofi/decomposition-agent run worker -- --watch` — process decomposition jobs with the agent runner
 
 ### Configuration
 

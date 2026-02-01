@@ -44,6 +44,12 @@ Implementation notes (2026-02-01):
 - Added local draft store (`devstore/intake-drafts` by default) keyed by conversation id and draft revision.
 - Tests: `npm -w @wofi/intake-agent run build`
 
+Implementation notes (2026-02-01):
+- Added `@wofi/decomposition-agent` package with a queue worker that executes decomposition jobs via Agents SDK.
+- Wired `web_search` tool usage for evidence retrieval, and hybrid WOFI search via `wofi.search_ideas`.
+- CLI: `npm -w @wofi/decomposition-agent run worker -- --watch`
+- Tests: `npm -w @wofi/decomposition-agent run build`
+
 Goal: enumerate the major software modules for WOFI 2.0 (kernel-aligned, proposal-set first, profile-based views).
 
 References:
