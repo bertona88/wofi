@@ -38,6 +38,12 @@ Implementation notes (2026-01-31):
 - Added prototype intake agent runner (`packages/agent-tools/src/prototype-agent.ts`) using the Agents SDK.
 - Tests (this update): `npm -w @wofi/indexer test`, `npm -w @wofi/agent-tools test`.
 
+Implementation notes (2026-02-01):
+- Added `@wofi/intake-agent` package with OpenAI Conversations-backed state, draft persistence, and explicit `conversation.stop` tooling.
+- Intake agent wraps `wofi.mint_submission` / `wofi.mint_idea` to enforce one-submission-per-conversation and to store submission/idea IDs in conversation metadata.
+- Added local draft store (`devstore/intake-drafts` by default) keyed by conversation id and draft revision.
+- Tests: `npm -w @wofi/intake-agent run build`
+
 Goal: enumerate the major software modules for WOFI 2.0 (kernel-aligned, proposal-set first, profile-based views).
 
 References:

@@ -10,3 +10,4 @@ Packages:
 - `packages/indexer/` — `@wofi/indexer` (Module A4)
 - `packages/query/` — `@wofi/query` (Module A5)
 - `packages/agent-tools/` — `@wofi/agent-tools` (Module B)
+- `packages/intake-agent/` — `@wofi/intake-agent` (Module B6)

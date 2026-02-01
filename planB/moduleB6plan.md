@@ -1,6 +1,6 @@
 # Module B6 Plan — Submission API + Normalization (Intake Agent)
 *Date: 2026-01-31*  
-*Status: DRAFT (planning)*
+*Status: IN PROGRESS (draft persistence + conversation control implemented)*
 
 Scope: Module **6** from `plan.md` (“Submission API + Normalization”), implemented as the **user-facing intake agent** pipeline described in `[[idea_pipeline_v_0.md]]`.
 
@@ -8,7 +8,7 @@ Non-goals:
 - Decomposition algorithm details (that is Module B9; see `[[how_decomposition_works.md]]`).
 - Profile scoring / active graph materialization (Module C).
 
-Primary deliverable: a service (or package) that runs an intake workflow and, upon acceptance, mints:
+Primary deliverable: a agent service (or package) that runs an intake workflow and, upon acceptance, mints:
 - `wofi.submission.v1`
 - `wofi.idea.v1`
 - `SUBMITTED_AS` edge (`Submission → Idea`)
@@ -162,3 +162,13 @@ We persist `draft.set_final(...)` state in Conversations API metadata (or respon
 - Unit: state machine transitions; draft schema validation; idempotency rules.
 - Integration: stubbed `wofi.search_ideas` + stubbed `web_search`; confirm accept/reject gating.
 - Integration: mint flow calls `@wofi/kernel/@wofi/store/@wofi/indexer` as expected.
+
+---
+
+## Implementation notes (2026-02-01)
+
+- Added `@wofi/intake-agent` package with conversation-backed state, draft persistence, and explicit `conversation.stop` tooling.
+- Drafts are persisted to a local draft store (`devstore/intake-drafts` by default) with metadata pointers stored on the OpenAI conversation.
+- Intake agent wraps `wofi.mint_submission` / `wofi.mint_idea` to enforce one-submission-per-conversation and to record IDs in conversation metadata.
+- CLI entrypoint: `npm -w @wofi/intake-agent run intake-agent` (requires `DATABASE_URL` + OpenAI env).
+- Tests: `npm -w @wofi/intake-agent run build`

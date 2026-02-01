@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/local-postgres.md",
+                "file": "planB/moduleB6plan.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "local-postgres"
+              "title": "moduleB6plan"
             }
           }
         ]
@@ -180,22 +180,25 @@
       "bases:Create new base": false
     }
   },
-  "active": "973d8e276e08c7d4",
+  "active": "b94232734e1e2d05",
   "lastOpenFiles": [
-    "`wofi_chat_decisions_2026-01-28.md`.md",
-    "packages/agent-tools/devstore/objects/sha256:a358cfaf6defa27caaa3bc0a5f7dc3e4cc357f1071e60ddc4120d41a6e4fc30d.json",
-    "packages/agent-tools/devstore/objects/sha256:45d6ba89741f7bdf7abe6e04104f79a5f57eed0959964b653edf232ffc709b99.json",
-    "packages/agent-tools/devstore/objects/sha256:f256a139dc92cfba003a96bd6f3d28d5b4b285a99f9af487855db9b980e01e9f.json",
-    "packages/agent-tools/devstore/objects/sha256:fa827e757674f628b64e30f948e192b9532ed9fd102c28c9d85d0b4cd28637f8.json",
-    "packages/agent-tools/devstore/objects/sha256:b8d44e31fae1c72a04ad6ec6dd4f93d079a3a51d8c45f3291606c152a1bad7fd.json",
-    "packages/agent-tools/devstore/objects/sha256:d911f13ff14e31bc14bdc94d0a784981a2bd6b3ebc1ebb1c9ce085d43b124191.json",
-    "packages/agent-tools/devstore/objects/sha256:a2e7cad09f04efde2387b417eff6f3315a5daf44255b4adcadb934014a193fc3.json",
-    "packages/agent-tools/devstore/objects/sha256:1dfe352948dabe21ab7f4479cee8b904cf7bb7f4eb5236159e8bbcf8f26c7973.json",
-    "packages/agent-tools/devstore/objects/sha256:3ed90bc563da33c93356c804617cb5a10efcd04734bc4680d1c8ac11ae2b4c47.json",
-    "devstore/objects/sha256:f87738b95ee6f10df7ce6ddaf5e9f3706d4a3ba662812100a381c70b18a44a0a.json",
+    "planB/moduleB7plan.md",
     "planB/moduleB6plan.md",
-    "planB/letsfirstbuildtheagentstoolsplan.md",
+    "packages/intake-agent/devstore/index.json",
+    "packages/intake-agent/devstore/objects",
+    "packages/intake-agent/devstore",
+    "plan.md",
     "docs/local-postgres.md",
+    "packages/intake-agent/dist/src/types.js",
+    "packages/intake-agent/dist/src/types.d.ts",
+    "packages/intake-agent/dist/src/intake-agent.js",
+    "packages/intake-agent/dist/src/intake-agent.d.ts",
+    "packages/intake-agent/dist/src/index.js",
+    "packages/intake-agent/dist/src/index.d.ts",
+    "packages/intake-agent/dist/src/conversation-state.js",
+    "planB/moduleB8plan.md",
+    "planB/letsfirstbuildtheagentstoolsplan.md",
+    "`wofi_chat_decisions_2026-01-28.md`.md",
     "node_modules/openai/src/internal/qs/README.md",
     "node_modules/openai/src/internal/qs/LICENSE.md",
     "node_modules/openai/src/_vendor/zod-to-json-schema/README.md",
@@ -214,10 +217,6 @@
     "node_modules/express-rate-limit/readme.md",
     "node_modules/express-rate-limit/license.md",
     "node_modules/ajv-formats/README.md",
-    "node_modules/cross-spawn/README.md",
-    "node_modules/content-type/README.md",
-    "node_modules/content-type/HISTORY.md",
-    "node_modules/type-is/node_modules/mime-types/README.md",
     "Untitled 1.canvas",
     "Untitled.canvas",
     "Gemini_Generated_Image_2hzrld2hzrld2hzr.png",
