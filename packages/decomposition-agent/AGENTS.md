@@ -23,6 +23,7 @@ npm -w @wofi/decomposition-agent run worker -- --watch
 - `WOFI_DECOMPOSITION_MODEL` (or `OPENAI_MODEL`)
 - `WOFI_DECOMPOSITION_REASONING` (`minimal|low|medium|high`)
 - `WOFI_DECOMPOSITION_MAX_TURNS` (default `30`)
+- `WOFI_DECOMPOSITION_BUDGET_MS` (default `300000`)
 - `WOFI_WEB_SEARCH_ALLOWED_DOMAINS` (comma-separated allowlist)
 - `WOFI_WEB_SEARCH_CONTEXT_SIZE` (`low|medium|high`)
 - `WOFI_DEFAULT_PROFILE_ID` (used by enqueueing agents)

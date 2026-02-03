@@ -57,6 +57,12 @@ Implementation notes (2026-02-02):
 - Default decomposition profile id set to `profile.default.v1`.
 - Tests: `npm -w @wofi/intake-agent test`
 
+Implementation notes (2026-02-03):
+- Decomposition agent: candidate grouping via `params._decomposition` (`run_id`, `candidate_id`, optional `minted_reason`).
+- Added 5-minute budget cap with budget-stop claim + agent-note evidence (`WOFI_DECOMPOSITION_BUDGET_MS` override).
+- Updated decomposition prompts for reuse-first and distinct candidate styles.
+- Tests: `npm -w @wofi/decomposition-agent test`
+
 Goal: enumerate the major software modules for WOFI 2.0 (kernel-aligned, proposal-set first, profile-based views).
 
 References:

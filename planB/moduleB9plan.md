@@ -1,6 +1,6 @@
 # Module B9 Plan — Construction Proposal Generator (Decomposition Agents)
 *Date: 2026-01-31*  
-*Status: IN PROGRESS (v0 worker wired, 2026-02-01)*
+*Status: DONE (candidate grouping + budget cap implemented, 2026-02-03)*
 
 Scope: Module **9** from `plan.md` (“Construction Proposal Generator”).
 
@@ -126,3 +126,11 @@ Outputs (persisted):
 - Uses `wofi.search_ideas` (hybrid) for WOFI graph reuse and mints objects via agent tools.
 - `web_search` sources are included via model provider data for traceability.
 - Tests: `npm -w @wofi/decomposition-agent run build`
+
+## Implementation notes (2026-02-03)
+
+- Added candidate grouping via `wofi.construction.v1.params._decomposition` (`run_id`, `candidate_id`, optional `minted_reason`).
+- Enforced 5-minute budget cap (env override: `WOFI_DECOMPOSITION_BUDGET_MS`) with budget-stop claim + agent-note evidence.
+- Updated prompts to require reuse-first and distinct candidate styles.
+- Added unit tests for instructions/prompt/budget payload.
+- Tests: `npm -w @wofi/decomposition-agent test`
