@@ -15,11 +15,11 @@
     "intake-agent": "node dist/src/cli.js"
   },
   "dependencies": {
-    "@openai/agents": "^0.4.4",
+    "@openai/agents": "latest",
     "@wofi/agent-tools": "file:../agent-tools",
     "@wofi/indexer": "file:../indexer",
     "@wofi/store": "file:../store",
-    "openai": "^4.104.0",
+    "openai": "latest",
     "pg": "^8.12.0",
     "zod": "^4.0.0"
   },
