@@ -4,6 +4,15 @@ export type IntakeStateName = 'draft' | 'final_proposed' | 'accepted' | 'rejecte
 
 export type ConversationCloseReason = 'submitted' | 'rejected' | 'duplicate' | 'blocked' | 'closed'
 
+export type ConversationCloseInput = {
+  reason?: ConversationCloseReason | null | undefined
+  message?: string | null | undefined
+  submission_id?: string | null | undefined
+  idea_id?: string | null | undefined
+}
+
+export type ConversationCloseFn = (input: ConversationCloseInput) => Promise<string>
+
 export type IntakeConversationState = {
   state: IntakeStateName
   draftRev?: number
