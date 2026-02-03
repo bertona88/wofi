@@ -89,7 +89,7 @@ async function main(): Promise<void> {
   const defaultProfileId =
     (typeof args['profile-id'] === 'string' && args['profile-id']) ||
     process.env.WOFI_DEFAULT_PROFILE_ID ||
-    'default'
+    'profile.default.v1'
 
   const debugTools = process.env.WOFI_AGENT_TOOL_DEBUG === 'true'
   const model = typeof args.model === 'string' ? args.model : undefined

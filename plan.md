@@ -50,6 +50,13 @@ Implementation notes (2026-02-01):
 - CLI: `npm -w @wofi/decomposition-agent run worker -- --watch`
 - Tests: `npm -w @wofi/decomposition-agent run build`
 
+Implementation notes (2026-02-02):
+- Added intake novelty gate (LLM-based) using `wofi.search_ideas` + hosted `web_search` before minting submissions.
+- Submission mint now stores full conversation transcript (including tool items) as JSON payload with `mime_type: application/json`.
+- Added prompt-injection input guardrail that blocks and closes conversations.
+- Default decomposition profile id set to `profile.default.v1`.
+- Tests: `npm -w @wofi/intake-agent test`
+
 Goal: enumerate the major software modules for WOFI 2.0 (kernel-aligned, proposal-set first, profile-based views).
 
 References:

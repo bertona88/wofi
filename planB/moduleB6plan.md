@@ -187,3 +187,11 @@ Key constraints:
 - Intake agent wraps `wofi.mint_submission` / `wofi.mint_idea` to enforce one-submission-per-conversation and to record IDs in conversation metadata.
 - CLI entrypoint: `npm -w @wofi/intake-agent run intake-agent` (requires `DATABASE_URL` + OpenAI env).
 - Tests: `npm -w @wofi/intake-agent run build`
+
+## Implementation notes (2026-02-02)
+
+- Added conversation export helper to store full transcript (including tool items) as JSON in `wofi.submission.v1` with `mime_type: application/json`.
+- Added novelty gate (LLM-based) that runs internal `wofi.search_ideas` + hosted `web_search` before minting; duplicates/rejections close the conversation without minting.
+- Added prompt-injection input guardrail that blocks and closes the conversation on detection.
+- Default decomposition profile id set to `profile.default.v1`.
+- Tests: `npm -w @wofi/intake-agent test`
